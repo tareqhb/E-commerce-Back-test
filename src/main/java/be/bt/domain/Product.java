@@ -25,5 +25,21 @@ private String image2;
 private String image3;
 @ManyToOne
 private Category category;
+public Product(String product_name, String product_description, BigDecimal product_price_sel,
+		BigDecimal product_price_buy, String image1, String image2, String image3, Category category) {
+	super();
+	this.product_name = product_name;
+	this.product_description = product_description;
+	this.product_price_sel = product_price_sel;
+	this.product_price_buy = product_price_buy;
+	this.image1 = image1;
+	this.image2 = image2;
+	this.image3 = image3;
+	this.category = category;
+}
+public Product() {
+	super();
+}
+
 
 }

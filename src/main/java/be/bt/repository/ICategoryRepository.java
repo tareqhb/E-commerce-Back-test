@@ -6,5 +6,5 @@ import be.bt.domain.Category;
 
 public interface ICategoryRepository extends JpaRepository<Category,Long> {
 
-	Category findCategoryBycategory_name(String category_name);
+
 }

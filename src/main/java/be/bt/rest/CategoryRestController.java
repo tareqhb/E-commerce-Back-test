@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +20,8 @@ import be.bt.domain.Category;
 import be.bt.domain.Product;
 import be.bt.repository.ICategoryRepository;
 @RestController
-@RequestMapping("/Categories")
+@RequestMapping("/categories")
+@CrossOrigin(origins="*")
 public class CategoryRestController {
 	 @Autowired
 	  private ICategoryRepository repository;
@@ -36,7 +38,7 @@ public class CategoryRestController {
 			  new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	  }
 	
-	  @PostMapping("/")
+	  @PostMapping
 	  public ResponseEntity<Category> addCategory(@RequestBody Category c)
 	  {
 		  Category res=repository.save(c);

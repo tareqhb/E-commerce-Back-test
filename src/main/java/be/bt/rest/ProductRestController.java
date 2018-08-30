@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import be.bt.repository.IProductRepository;
 
 @RestController
 @RequestMapping("/products")
+@CrossOrigin(origins="*")
 public class ProductRestController {
   @Autowired
   private IProductRepository repository;
@@ -35,7 +37,7 @@ public class ProductRestController {
 	  return (res.isPresent()) ? new ResponseEntity<>(res.get(),HttpStatus.OK):
 		  new ResponseEntity<>(HttpStatus.NOT_FOUND);
   }
-  @PostMapping("/")
+  @PostMapping
   public ResponseEntity<Product> addProduct(@RequestBody Product c)
   {
 	  Product res=repository.save(c);
