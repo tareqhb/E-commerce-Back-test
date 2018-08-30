@@ -20,8 +20,12 @@ public class Category {
 	private String category_name;
 	@OneToMany(mappedBy="category")
 	private List<Product> products;
+	
 	public Category(String category_name) {
 		this.category_name = category_name;
+	}
+	public Category() {
+		super();
 	}
 	
 }

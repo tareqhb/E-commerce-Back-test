@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import be.bt.domain.Product;
+import be.bt.repository.ICategoryRepository;
 import be.bt.repository.IProductRepository;
 
 @RestController
@@ -25,6 +26,8 @@ import be.bt.repository.IProductRepository;
 public class ProductRestController {
   @Autowired
   private IProductRepository repository;
+  @Autowired
+  private ICategoryRepository repositoryCategorie;
   @GetMapping("")
   public List<Product> getAllProducts()
   {
@@ -40,6 +43,9 @@ public class ProductRestController {
   @PostMapping
   public ResponseEntity<Product> addProduct(@RequestBody Product c)
   {
+	   c.setCategory(repositoryCategorie.findById((long)1).get());
+	   c.getCategory().getProducts().add(c);
+	  repositoryCategorie.save(c.getCategory());
 	  Product res=repository.save(c);
 	  return(res!=null) ? new ResponseEntity<>(res,HttpStatus.CREATED):new ResponseEntity<>(null,HttpStatus.CONFLICT);
   }
