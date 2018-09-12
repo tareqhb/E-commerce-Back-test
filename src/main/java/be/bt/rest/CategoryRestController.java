@@ -23,9 +23,11 @@ import be.bt.repository.ICategoryRepository;
 @RequestMapping("/categories")
 @CrossOrigin(origins="*")
 public class CategoryRestController {
-	 @Autowired
+	
+	@Autowired
 	  private ICategoryRepository repository;
-	  @GetMapping("")
+	
+	 @GetMapping("")
 	  public List<Category> getAllCategories()
 	  {
 		  return repository.findAll();

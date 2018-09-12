@@ -9,15 +9,19 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 @Entity
 @Table(name="Category")
 @Data
+//@JsonIgnoreProperties({"products"})
 public class Category {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long category_id;
 	private String category_name;
+	
 	@OneToMany(mappedBy="category")
 	private List<Product> products;
 	
@@ -27,5 +31,6 @@ public class Category {
 	public Category() {
 		super();
 	}
+	
 	
 }

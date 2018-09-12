@@ -2,12 +2,16 @@ spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     password: password
-    url: jdbc:mysql://localhost:3306/Ecommerce?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/Ecommercedb?useSSL=false
     username: root
   jpa:
     database: MYSQL
+    show-sql: true
+    properties: 
+      hibernate:
+      
+         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+         naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    
     hibernate:
       ddl-auto: update
-      dialect: org.hibernate.dialect.MySQL5Dialect
-      naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
-    show-sql: true

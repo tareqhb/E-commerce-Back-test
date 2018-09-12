@@ -43,9 +43,6 @@ public class ProductRestController {
   @PostMapping
   public ResponseEntity<Product> addProduct(@RequestBody Product c)
   {
-	   c.setCategory(repositoryCategorie.findById((long)1).get());
-	   c.getCategory().getProducts().add(c);
-	  repositoryCategorie.save(c.getCategory());
 	  Product res=repository.save(c);
 	  return(res!=null) ? new ResponseEntity<>(res,HttpStatus.CREATED):new ResponseEntity<>(null,HttpStatus.CONFLICT);
   }

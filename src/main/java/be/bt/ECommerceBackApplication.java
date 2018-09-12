@@ -18,15 +18,15 @@ public class ECommerceBackApplication {
 	private IProductRepository repo;
 	public static void main(String[] args) {
 		SpringApplication.run(ECommerceBackApplication.class, args);
-	Product dd= new Product();
+//	Product dd= new Product();
 
 	}
-	@Bean
-	public 	CommandLineRunner runIt()
-	{
-	return args ->{
-	//		repo.save(ss);
-			repo.findAll().forEach(System.out :: println);
-		};
-	}
+//	@Bean
+//	public 	CommandLineRunner runIt()
+//	{
+//	return args ->{
+//	//		repo.save(ss);
+//			repo.findAll().forEach(System.out :: println);
+//		};
+//	}
 }
